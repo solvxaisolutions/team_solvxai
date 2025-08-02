@@ -320,10 +320,10 @@ const Contact = () => {
                     <Clock className={`w-5 h-5 ${isDarkMode ? 'text-primary-400' : 'text-primary-500'}`} />
                     <span className={`${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>24-hour response time</span>
                   </div>
-                  <div className="flex items-center space-x-3">
+                  {/* <div className="flex items-center space-x-3">
                     <Users className={`w-5 h-5 ${isDarkMode ? 'text-primary-400' : 'text-primary-500'}`} />
                     <span className={`${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>500+ satisfied clients</span>
-                  </div>
+                  </div> */}
                   <div className="flex items-center space-x-3">
                     <MessageSquare className={`w-5 h-5 ${isDarkMode ? 'text-primary-400' : 'text-primary-500'}`} />
                     <span className={`${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>Free consultation</span>
