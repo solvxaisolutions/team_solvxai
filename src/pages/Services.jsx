@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { 
   Code, 
   Smartphone, 
@@ -12,9 +13,11 @@ import {
   ArrowRight,
   Check
 } from 'lucide-react';
+import CtaSection from '../components/CtaSection';
 
 const Services = () => {
   const servicesRef = useRef(null);
+  const isDarkMode = useSelector(state => state.theme.isDarkMode);
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -81,14 +84,14 @@ const Services = () => {
   ];
 
   return (
-    <div className="pt-16 min-h-screen bg-dark-900">
+    <div className={`pt-16 min-h-screen ${isDarkMode ? 'bg-dark-900' : 'bg-gray-50'}`}>
       {/* Hero Section */}
-      <section className="py-20 hero-pattern">
+      <section className={`py-20 ${isDarkMode ? 'hero-pattern' : 'bg-gradient-to-r from-primary-500/20 to-secondary-500/20'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-8 animate-fade-in">
+          <h1 className={`text-5xl md:text-6xl font-bold mb-8 animate-fade-in ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
             Our <span className="gradient-text">Services</span>
           </h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-12 animate-slide-up">
+          <p className={`text-xl max-w-3xl mx-auto mb-12 animate-slide-up ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
             Comprehensive digital solutions tailored to your business needs. 
             From concept to deployment, we've got you covered.
           </p>
@@ -96,33 +99,39 @@ const Services = () => {
       </section>
 
       {/* Main Services */}
-      <section className="py-20 bg-dark-800" ref={servicesRef}>
+      <section className={`py-20 ${isDarkMode ? 'bg-dark-800' : 'bg-white'}`} ref={servicesRef}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {mainServices.map((service, index) => (
               <div
                 key={index}
-                className="glass-morphism rounded-2xl p-8 hover:bg-white/10 transition-all duration-300 group hover:scale-105"
+                className={`rounded-2xl p-8 transition-all duration-300 group hover:scale-105 ${
+                  isDarkMode 
+                    ? 'glass-morphism hover:bg-white/10' 
+                    : 'bg-white hover:bg-gray-50 border border-gray-200 hover:border-primary-200 hover:shadow-lg'
+                }`}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="text-primary-400 mb-6 group-hover:scale-110 transition-transform duration-300">
+                <div className={`mb-6 group-hover:scale-110 transition-transform duration-300 ${
+                  isDarkMode ? 'text-primary-400' : 'text-primary-500'
+                }`}>
                   {service.icon}
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-4">
+                <h3 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
                   {service.title}
                 </h3>
-                <p className="text-gray-300 mb-6 leading-relaxed">
+                <p className={`mb-6 leading-relaxed ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
                   {service.description}
                 </p>
                 <ul className="space-y-2 mb-6">
                   {service.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center text-gray-300">
-                      <Check size={16} className="text-primary-400 mr-2" />
+                    <li key={idx} className={`flex items-center ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                      <Check size={16} className={`mr-2 ${isDarkMode ? 'text-primary-400' : 'text-primary-500'}`} />
                       {feature}
                     </li>
                   ))}
                 </ul>
-                <div className="border-t border-white/10 pt-6">
+                <div className={`border-t pt-6 ${isDarkMode ? 'border-white/10' : 'border-gray-200'}`}>
                   <div className="text-lg font-semibold gradient-text mb-4">
                     {service.price}
                   </div>
@@ -141,13 +150,13 @@ const Services = () => {
       </section>
 
       {/* Additional Services */}
-      <section className="py-20 bg-dark-900">
+      <section className={`py-20 ${isDarkMode ? 'bg-dark-900' : 'bg-gray-50'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-white mb-6">
+            <h2 className={`text-4xl font-bold mb-6 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
               Additional Services
             </h2>
-            <p className="text-xl text-gray-300">
+            <p className={`text-xl ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
               Complementary services to enhance your digital ecosystem
             </p>
           </div>
@@ -156,15 +165,21 @@ const Services = () => {
             {additionalServices.map((service, index) => (
               <div
                 key={index}
-                className="glass-morphism rounded-xl p-6 text-center hover:bg-white/10 transition-all duration-300 group"
+                className={`rounded-xl p-6 text-center transition-all duration-300 group ${
+                  isDarkMode 
+                    ? 'glass-morphism hover:bg-white/10' 
+                    : 'bg-white hover:bg-gray-50 border border-gray-200 hover:border-primary-200 hover:shadow-lg'
+                }`}
               >
-                <div className="text-primary-400 mb-4 flex justify-center group-hover:scale-110 transition-transform duration-300">
+                <div className={`mb-4 flex justify-center group-hover:scale-110 transition-transform duration-300 ${
+                  isDarkMode ? 'text-primary-400' : 'text-primary-500'
+                }`}>
                   {React.cloneElement(service.icon, { size: 40 })}
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-3">
+                <h3 className={`text-xl font-semibold mb-3 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
                   {service.title}
                 </h3>
-                <p className="text-gray-300">
+                <p className={`${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
                   {service.description}
                 </p>
               </div>
@@ -174,13 +189,13 @@ const Services = () => {
       </section>
 
       {/* Process Section */}
-      <section className="py-20 bg-dark-800">
+      <section className={`py-20 ${isDarkMode ? 'bg-dark-800' : 'bg-white'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-white mb-6">
+            <h2 className={`text-4xl font-bold mb-6 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
               Our Process
             </h2>
-            <p className="text-xl text-gray-300">
+            <p className={`text-xl ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
               A streamlined approach to deliver exceptional results
             </p>
           </div>
@@ -196,10 +211,10 @@ const Services = () => {
                 <div className="text-6xl font-bold gradient-text mb-4 group-hover:scale-110 transition-transform duration-300">
                   {item.step}
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-3">
+                <h3 className={`text-xl font-semibold mb-3 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
                   {item.title}
                 </h3>
-                <p className="text-gray-300">
+                <p className={`${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
                   {item.description}
                 </p>
               </div>
@@ -209,23 +224,7 @@ const Services = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-dark-900">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Ready to Get Started?
-          </h2>
-          <p className="text-xl text-gray-300 mb-8">
-            Let's discuss your project and see how we can help bring your vision to life
-          </p>
-          <Link
-            to="/contact"
-            className="gradient-bg text-white px-12 py-4 rounded-full font-semibold inline-flex items-center space-x-2 hover:scale-105 transition-transform duration-300 shadow-lg hover:shadow-primary-500/25"
-          >
-            <span>Start Your Project</span>
-            <ArrowRight size={20} />
-          </Link>
-        </div>
-      </section>
+      <CtaSection />
     </div>
   );
 };
