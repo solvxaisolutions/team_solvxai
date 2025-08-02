@@ -24,7 +24,7 @@ const Footer = () => {
               <a href="#" className="text-gray-400 hover:text-primary-400 transition-colors">
                 <Linkedin size={20} />
               </a>
-              <a href="#" className="text-gray-400 hover:text-primary-400 transition-colors">
+              <a href="https://www.instagram.com/solvx_ai/" className="text-gray-400 hover:text-primary-400 transition-colors">
                 <Instagram size={20} />
               </a>
             </div>
@@ -58,23 +58,23 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <Mail size={16} className="text-primary-400" />
-                <span className="text-gray-300">hello@solvx.ai</span>
+                <span className="text-gray-300">solvxaisolutions@gmail.com</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone size={16} className="text-primary-400" />
-                <span className="text-gray-300">+1 (555) 123-4567</span>
+                <span className="text-gray-300">+91 85904 43083</span>
               </div>
               <div className="flex items-center space-x-3">
                 <MapPin size={16} className="text-primary-400" />
-                <span className="text-gray-300">New York, NY</span>
+                <span className="text-gray-300">Kerala, India</span>
               </div>
             </div>
           </div>
         </div>
 
         <div className="border-t border-white/10 mt-8 pt-8 text-center">
-          <p className="text-gray-400 text-sm">
-            © 2024 SolvxAI. All rights reserved. Built with ❤️ by SolvxAI Team.
+          <p className="text-gray-400 text-md">
+            © 2024 SolvxAI. All rights reserved. Have a &#9749; chai and chat with us.
           </p>
         </div>
       </div>
