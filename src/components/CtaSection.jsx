@@ -1,9 +1,10 @@
-import { ArrowRight, Link } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const CtaSection = () => {
-  const isDarkMode = useSelector(state => state.theme.isDarkMode);
+    const isDarkMode = useSelector(state => state.theme.isDarkMode);
     return (
         <section className={`py-20 ${isDarkMode ? 'bg-dark-800' : 'bg-gradient-to-r from-primary-500/20 to-secondary-500/20'}`}>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
