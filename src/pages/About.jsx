@@ -12,6 +12,7 @@ import {
   ArrowRight,
   Star
 } from 'lucide-react';
+import CtaSection from '../components/CtaSection';
 
 const About = () => {
   const aboutRef = useRef(null);

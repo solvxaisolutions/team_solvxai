@@ -110,7 +110,7 @@ const Contact = () => {
   return (
     <div className={`pt-16 min-h-screen ${isDarkMode ? 'bg-dark-900' : 'bg-gray-50'}`}>
       {/* Hero Section */}
-      <section className={`py-20 ${isDarkMode ? 'hero-pattern' : 'light-hero-pattern'}`}>
+      <section className={`py-20 ${isDarkMode ? 'hero-pattern' : 'bg-gradient-to-r from-primary-500/20 to-secondary-500/20'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className={`text-5xl md:text-6xl font-bold mb-8 animate-fade-in ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
             Contact <span className="gradient-text">Us</span>
