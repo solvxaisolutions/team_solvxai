@@ -223,23 +223,7 @@ const Services = () => {
       </section>
 
       {/* CTA Section */}
-      <section className={`py-20 ${isDarkMode ? 'bg-dark-900' : 'bg-gray-50'}`}>
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className={`text-4xl md:text-5xl font-bold mb-6 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-            Ready to Get Started?
-          </h2>
-          <p className={`text-xl mb-8 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-            Let's discuss your project and see how we can help bring your vision to life
-          </p>
-          <Link
-            to="/contact"
-            className="gradient-bg text-white px-12 py-4 rounded-full font-semibold inline-flex items-center space-x-2 hover:scale-105 transition-transform duration-300 shadow-lg hover:shadow-primary-500/25"
-          >
-            <span>Start Your Project</span>
-            <ArrowRight size={20} />
-          </Link>
-        </div>
-      </section>
+      <CtaSection />
     </div>
   );
 };
