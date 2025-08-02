@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { 
   Users, 
   Target, 
@@ -14,6 +15,7 @@ import {
 
 const About = () => {
   const aboutRef = useRef(null);
+  const isDarkMode = useSelector(state => state.theme.isDarkMode);
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -86,14 +88,14 @@ const About = () => {
   ];
 
   return (
-    <div className="pt-16 min-h-screen bg-dark-900">
+    <div className={`pt-16 min-h-screen ${isDarkMode ? 'bg-dark-900' : 'bg-gray-50'}`}>
       {/* Hero Section */}
-      <section className="py-20 hero-pattern">
+      <section className={`py-20 ${isDarkMode ? 'hero-pattern' : 'light-hero-pattern'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-8 animate-fade-in">
+          <h1 className={`text-5xl md:text-6xl font-bold mb-8 animate-fade-in ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
             About <span className="gradient-text">SolvxAI</span>
           </h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-12 animate-slide-up">
+          <p className={`text-xl max-w-3xl mx-auto mb-12 animate-slide-up ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
             We're a passionate team of developers, designers, and digital strategists 
             dedicated to transforming your ideas into powerful digital experiences.
           </p>
@@ -101,14 +103,14 @@ const About = () => {
       </section>
 
       {/* Story Section */}
-      <section className="py-20 bg-dark-800" ref={aboutRef}>
+      <section className={`py-20 ${isDarkMode ? 'bg-dark-800' : 'bg-white'}`} ref={aboutRef}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-4xl font-bold text-white mb-8">
+              <h2 className={`text-4xl font-bold mb-8 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
                 Our Story
               </h2>
-              <div className="space-y-6 text-gray-300 leading-relaxed">
+              <div className={`space-y-6 leading-relaxed ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
                 <p>
                   Founded in 2019, SolvxAI began as a small team of passionate developers 
                   who believed that every business deserves a powerful digital presence. 
@@ -140,13 +142,13 @@ const About = () => {
       </section>
 
       {/* Values Section */}
-      <section className="py-20 bg-dark-900">
+      <section className={`py-20 ${isDarkMode ? 'bg-dark-900' : 'bg-gray-50'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-white mb-6">
+            <h2 className={`text-4xl font-bold mb-6 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
               Our Values
             </h2>
-            <p className="text-xl text-gray-300">
+            <p className={`text-xl ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
               The principles that guide everything we do
             </p>
           </div>
@@ -155,16 +157,22 @@ const About = () => {
             {values.map((value, index) => (
               <div
                 key={index}
-                className="glass-morphism rounded-2xl p-8 text-center hover:bg-white/10 transition-all duration-300 group hover:scale-105"
+                className={`rounded-2xl p-8 text-center hover:scale-105 transition-all duration-300 group ${
+                  isDarkMode 
+                    ? 'glass-morphism hover:bg-white/10' 
+                    : 'bg-white border border-gray-200 hover:shadow-lg'
+                }`}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="text-primary-400 mb-6 flex justify-center group-hover:scale-110 transition-transform duration-300">
+                <div className={`mb-6 flex justify-center group-hover:scale-110 transition-transform duration-300 ${
+                  isDarkMode ? 'text-primary-400' : 'text-primary-500'
+                }`}>
                   {value.icon}
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-4">
+                <h3 className={`text-xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
                   {value.title}
                 </h3>
-                <p className="text-gray-300 leading-relaxed">
+                <p className={`leading-relaxed ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
                   {value.description}
                 </p>
               </div>
@@ -174,13 +182,13 @@ const About = () => {
       </section>
 
       {/* Team Section */}
-      <section className="py-20 bg-dark-800">
+      <section className={`py-20 ${isDarkMode ? 'bg-dark-800' : 'bg-white'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-white mb-6">
+            <h2 className={`text-4xl font-bold mb-6 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
               Meet Our Team
             </h2>
-            <p className="text-xl text-gray-300">
+            <p className={`text-xl ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
               The talented individuals behind SolvxAI
             </p>
           </div>
@@ -189,7 +197,11 @@ const About = () => {
             {team.map((member, index) => (
               <div
                 key={index}
-                className="glass-morphism rounded-2xl p-6 text-center hover:bg-white/10 transition-all duration-300 group hover:scale-105"
+                className={`rounded-2xl p-6 text-center hover:scale-105 transition-all duration-300 group ${
+                  isDarkMode 
+                    ? 'glass-morphism hover:bg-white/10' 
+                    : 'bg-white border border-gray-200 hover:shadow-lg'
+                }`}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="mb-6 relative">
@@ -199,13 +211,13 @@ const About = () => {
                     className="w-24 h-24 rounded-full mx-auto object-cover border-4 border-primary-400/30 group-hover:border-primary-400/50 transition-colors duration-300"
                   />
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-2">
+                <h3 className={`text-xl font-semibold mb-2 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
                   {member.name}
                 </h3>
                 <div className="text-primary-400 font-medium mb-3">
                   {member.role}
                 </div>
-                <p className="text-gray-300 text-sm leading-relaxed">
+                <p className={`text-sm leading-relaxed ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
                   {member.description}
                 </p>
               </div>
@@ -215,13 +227,13 @@ const About = () => {
       </section>
 
       {/* Achievements Section */}
-      <section className="py-20 bg-dark-900">
+      <section className={`py-20 ${isDarkMode ? 'bg-dark-900' : 'bg-gray-50'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-white mb-6">
+            <h2 className={`text-4xl font-bold mb-6 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
               Our Achievements
             </h2>
-            <p className="text-xl text-gray-300">
+            <p className={`text-xl ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
               Numbers that speak for our success
             </p>
           </div>
@@ -233,13 +245,15 @@ const About = () => {
                 className="text-center group"
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
-                <div className="text-primary-400 mb-4 flex justify-center group-hover:scale-110 transition-transform duration-300">
+                <div className={`mb-4 flex justify-center group-hover:scale-110 transition-transform duration-300 ${
+                  isDarkMode ? 'text-primary-400' : 'text-primary-500'
+                }`}>
                   {React.cloneElement(achievement.icon, { size: 40 })}
                 </div>
                 <div className="text-4xl font-bold gradient-text mb-2">
                   {achievement.count}
                 </div>
-                <div className="text-gray-300 font-medium">
+                <div className={`font-medium ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
                   {achievement.title}
                 </div>
               </div>
@@ -249,12 +263,12 @@ const About = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-dark-800">
+      <section className={`py-20 ${isDarkMode ? 'bg-dark-800' : 'bg-white'}`}>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          <h2 className={`text-4xl md:text-5xl font-bold mb-6 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
             Ready to Work With Us?
           </h2>
-          <p className="text-xl text-gray-300 mb-8">
+          <p className={`text-xl mb-8 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
             Let's collaborate and create something amazing together
           </p>
           <Link
