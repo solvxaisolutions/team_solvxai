@@ -110,18 +110,17 @@ const About = () => {
               </h2>
               <div className="space-y-6 text-gray-300 leading-relaxed">
                 <p>
-                  Founded in 2019, SolvxAI began as a small team of passionate developers 
-                  who believed that every business deserves a powerful digital presence. 
-                  What started as a vision to democratize web development has grown into 
-                  a full-service digital agency.
+                  Founded in 2025, SolvxAI began as a small team of passionate developers 
+                  who believed that every business deserves a powerful digital presence.
                 </p>
                 <p>
-                  Today, we're proud to have helped over 500 businesses across 25 countries 
-                  achieve their digital goals. From startups to enterprise companies, we've 
-                  been the trusted partner in their digital transformation journey.
+                  At SolvxAI, we're committed to growing alongside our clients—building
+                  innovative solutions, forging meaningful partnerships, and constantly 
+                  evolving to meet the needs of a digital-first world. Every project we 
+                  take on is a step toward shaping the future of digital experiences.
                 </p>
                 <p>
-                  Our mission remains the same: to create exceptional digital experiences 
+                  Our mission: to create exceptional digital experiences 
                   that drive real business results. We combine creativity with technology, 
                   strategy with execution, and passion with precision.
                 </p>
@@ -174,7 +173,7 @@ const About = () => {
       </section>
 
       {/* Team Section */}
-      <section className="py-20 bg-dark-800">
+      {/* <section className="py-20 bg-dark-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-white mb-6">
@@ -212,10 +211,10 @@ const About = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Achievements Section */}
-      <section className="py-20 bg-dark-900">
+      {/* <section className="py-20 bg-dark-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-white mb-6">
@@ -246,10 +245,10 @@ const About = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* CTA Section */}
-      <section className="py-20 bg-dark-800">
+      <section className="py-20 hero-pattern">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Ready to Work With Us?
