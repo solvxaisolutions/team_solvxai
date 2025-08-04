@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
-
+import { FaInstagram, FaFacebookF, FaLinkedinIn } from "react-icons/fa";
+import { CiMail ,CiPhone,CiMapPin} from "react-icons/ci";
+import { FaXTwitter } from "react-icons/fa6";
 const Footer = () => {
   const isDarkMode = useSelector(state => state.theme.isDarkMode);
 
@@ -16,7 +17,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="space-y-4">
-            <h3 className="text-2xl font-bold gradient-text">solvx.ai</h3>
+            <h3 className="text-2xl font-bold gradient-text">SolvxAI</h3>
             <p className={`text-sm leading-relaxed ${isDarkMode ? 'text-gray-300' : 'text-gray-400'}`}>
               Transforming your digital presence with cutting-edge web solutions. 
               We create stunning, responsive websites that drive results.
@@ -27,24 +28,24 @@ const Footer = () => {
                   ? 'text-gray-400 hover:text-primary-400' 
                   : 'text-gray-500 hover:text-primary-500'
               }`}>
-                <Facebook size={20} />
+                <FaFacebookF size={20} />
               </a>
               <a href="#" className={`transition-colors ${
                 isDarkMode 
                   ? 'text-gray-400 hover:text-primary-400' 
                   : 'text-gray-500 hover:text-primary-500'
               }`}>
-                <Twitter size={20} />
+                <FaXTwitter size={20} />
               </a>
-              <a href="#" className={`transition-colors ${
+              <a href="https://www.linkedin.com/company/solvx-ai/about/" className={`transition-colors ${
                 isDarkMode 
                   ? 'text-gray-400 hover:text-primary-400' 
                   : 'text-gray-500 hover:text-primary-500'
               }`}>
-                <Linkedin size={20} />
+                <FaLinkedinIn size={20} />
               </a>
               <a href="https://www.instagram.com/solvx_ai/" className="text-gray-400 hover:text-primary-400 transition-colors">
-                <Instagram size={20} />
+                <FaInstagram size={20} />
               </a>
             </div>
           </div>
@@ -81,9 +82,11 @@ const Footer = () => {
             <h4 className={`text-lg font-semibold ${isDarkMode ? 'text-white' : 'text-gray-100'}`}>Services</h4>
             <ul className="space-y-2">
               <li className={`${isDarkMode ? 'text-gray-300' : 'text-gray-400'}`}>Web Development</li>
-              <li className={`${isDarkMode ? 'text-gray-300' : 'text-gray-400'}`}>Mobile Apps</li>
-              <li className={`${isDarkMode ? 'text-gray-300' : 'text-gray-400'}`}>UI/UX Design</li>
-              <li className={`${isDarkMode ? 'text-gray-300' : 'text-gray-400'}`}>Digital Marketing</li>
+              <li className={`${isDarkMode ? 'text-gray-300' : 'text-gray-400'}`}>E-commerce Development</li>
+              <li className={`${isDarkMode ? 'text-gray-300' : 'text-gray-400'}`}>Mobile App Development</li>
+              <li className={`${isDarkMode ? 'text-gray-300' : 'text-gray-400'}`}>Startup Supports</li>
+              <li className={`${isDarkMode ? 'text-gray-300' : 'text-gray-400'}`}>Cloud Services</li>
+              <li className={`${isDarkMode ? 'text-gray-300' : 'text-gray-400'}`}>SaaS Development</li>
             </ul>
           </div>
 
@@ -92,15 +95,15 @@ const Footer = () => {
             <h4 className={`text-lg font-semibold ${isDarkMode ? 'text-white' : 'text-gray-100'}`}>Contact Us</h4>
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
-                <Mail size={16} className="text-primary-400" />
+                <CiMail size={16} className="text-primary-400" />
                 <span className="text-gray-300">solvxaisolutions@gmail.com</span>
               </div>
               <div className="flex items-center space-x-3">
-                <Phone size={16} className="text-primary-400" />
+                <CiPhone size={16} className="text-primary-400" />
                 <span className="text-gray-300">+91 85904 43083</span>
               </div>
               <div className="flex items-center space-x-3">
-                <MapPin size={16} className="text-primary-400" />
+                <CiMapPin size={16} className="text-primary-400" />
                 <span className="text-gray-300">Kerala, India</span>
               </div>
             </div>
