@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { Menu, X } from 'lucide-react';
+import { CiMenuBurger } from "react-icons/ci";
 import ThemeToggle from './ThemeToggle';
+import logo from "../assets/logo__1.png"
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -37,9 +39,9 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
         <Link to="/" className="flex items-center animate-fade-in">
   <img
-    src="/src/assets/logo__1.png"
+    src={logo}
     alt="Solvx.ai Logo"
-    className="h-10 w-10 object-contain m-0 p-0 align-middle"
+    className="h-7 w-7 object-contain m-0 p-0 align-middle"
   />
   <span className="text-3xl font-bold gradient-text leading-none ml-[-2px]">
     olvxAI
@@ -86,7 +88,7 @@ const Navbar = () => {
                   : 'text-gray-900 hover:text-primary-500'
               }`}
             >
-              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              {isMobileMenuOpen ? <X size={24} /> : <CiMenuBurger size={24} />}
             </button>
           </div>
         </div>

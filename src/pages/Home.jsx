@@ -2,7 +2,8 @@ import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Bot from '../splineComponet/Bot';
-import { FaInstagram, FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
+import { FaInstagram, FaFacebookF, FaLinkedinIn } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 import { 
   ArrowRight, 
   Code, 
@@ -23,7 +24,9 @@ import {
   Cloud,
   Search,
   Play,
-  ChevronRight
+  ChevronRight,
+  ShoppingCart,
+  ServerCog
 } from 'lucide-react';
 
 const Home = () => {
@@ -56,37 +59,38 @@ const Home = () => {
   }, []);
 
   const services = [
-    {
-      icon: <Code className="w-8 h-8" />,
-      title: "Web Development",
-      description: "Custom websites built with modern technologies and best practices for optimal performance."
-    },
-    {
-      icon: <Smartphone className="w-8 h-8" />,
-      title: "Mobile Apps",
-      description: "Native and cross-platform mobile applications for iOS and Android platforms."
-    },
-    {
-      icon: <Palette className="w-8 h-8" />,
-      title: "UI/UX Design",
-      description: "Beautiful, intuitive designs that enhance user experience and drive engagement."
-    },
-    {
-      icon: <TrendingUp className="w-8 h-8" />,
-      title: "Digital Marketing",
-      description: "Strategic marketing solutions to grow your online presence and reach your audience."
-    },
-    {
-      icon: <Brain className="w-8 h-8" />,
-      title: "AI Solutions",
-      description: "Cutting-edge artificial intelligence solutions to automate and optimize your business."
-    },
-    {
-      icon: <Cloud className="w-8 h-8" />,
-      title: "Cloud Services",
-      description: "Scalable cloud infrastructure and deployment solutions for modern applications."
-    }
-  ];
+  {
+    icon: <Code className="w-8 h-8" />,
+    title: "Web Development",
+    description: "We build responsive, secure, and high-performing websites using modern technologies like React, Next.js, and Node.js."
+  },
+  {
+    icon: <ShoppingCart className="w-8 h-8" />,
+    title: "E-commerce Development",
+    description: "We develop scalable e-commerce platforms with seamless payment integrations and user-friendly interfaces to boost your online sales."
+  },
+  {
+    icon: <Smartphone className="w-8 h-8" />,
+    title: "Mobile App Development",
+    description: "We create fast, cross-platform mobile apps for iOS and Android using React Native and Flutter."
+  },
+  {
+    icon: <Rocket className="w-8 h-8" />,
+    title: "Startup Supports",
+    description: "From MVP development to product-market fit, we help startups scale with technical expertise and business strategy."
+  },
+  {
+    icon: <Cloud className="w-8 h-8" />,
+    title: "Cloud Services",
+    description: "Deploy and manage applications in the cloud with our AWS, Azure, and Google Cloud expertise."
+  },
+  {
+    icon: <ServerCog className="w-8 h-8" />,
+    title: "SaaS Development",
+    description: "We design and develop scalable SaaS platforms with robust multi-tenant architecture and subscription management."
+  }
+];
+
 
   const stats = [
     { icon: <Users />, number: "500+", label: "Happy Clients" },
@@ -145,8 +149,8 @@ const Home = () => {
 const trustedPartners = [
   { name: "Instagram", url: "https://www.instagram.com/solvx_ai/", icon: <FaInstagram /> },
   { name: "Facebook", url: "https://www.facebook.com", icon: <FaFacebookF /> },
-  { name: "Twitter", url: "https://www.twitter.com", icon: <FaTwitter /> },
-  { name: "LinkedIn", url: "https://www.linkedin.com", icon: <FaLinkedinIn /> },
+  { name: "Twitter", url: "https://www.twitter.com", icon: <FaXTwitter /> },
+  { name: "LinkedIn", url: "https://www.linkedin.com/company/solvx-ai/about/", icon: <FaLinkedinIn /> },
 ];
 
 
