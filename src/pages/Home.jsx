@@ -1,14 +1,15 @@
-import React, { useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
-import {
-  ArrowRight,
-  Code,
-  Smartphone,
-  Palette,
-  TrendingUp,
-  Users,
-  Award,
+import React, { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import Bot from '../splineComponet/Bot';
+import { 
+  ArrowRight, 
+  Code, 
+  Smartphone, 
+  Palette, 
+  TrendingUp, 
+  Users, 
+  Award, 
   Zap,
   Star,
   CheckCircle,
@@ -21,9 +22,8 @@ import {
   Cloud,
   Search,
   Play,
-  ChevronRight,
-} from "lucide-react";
-import Bot from "../splineComponent/bot";
+  ChevronRight
+} from 'lucide-react';
 
 const Home = () => {
   const heroRef = useRef(null);
@@ -157,14 +157,13 @@ const Home = () => {
     },
   ];
 
-  const trustedPartners = [
-    "Microsoft",
-    "Google",
-    "Amazon",
-    "Meta",
-    "Apple",
-    "Netflix",
-  ];
+ const trustedPartners = [
+  { name: "Instagram", url: "https://www.instagram.com/solvx_ai/" },
+  { name: "Facebook", url: "https://www.facebook.com" },
+  { name: "Twitter", url: "https://www.twitter.com" },
+  { name: "LinkedIn", url: "https://www.linkedin.com" },
+];
+
 
   const teamAvatars = [
     "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=60&h=60&dpr=1",
@@ -224,42 +223,29 @@ const Home = () => {
                     />
                   ))}
                 </div>
-                <span
-                  className={`text-sm ${
-                    isDarkMode ? "text-gray-300" : "text-gray-600"
-                  }`}
-                >
-                  Trusted by 500+ companies
+                <span className={`text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                  Founders who code &#128640;
                 </span>
               </div>
 
               {/* Main Heading */}
               <h1 className="text-5xl md:text-7xl font-bold mb-8 animate-fade-in leading-tight">
-                <span
-                  className={`block mb-2 ${
-                    isDarkMode ? "text-white" : "text-gray-900"
-                  }`}
-                >
-                  Your Trusted
+                <span className={`block mb-2 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
+                  Build Smart
                 </span>
-                <span
-                  className={`block mb-2 ${
-                    isDarkMode ? "text-white" : "text-gray-900"
-                  }`}
-                >
-                  Partner in
+                <span className={`block mb-2 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
+                  Launch Fast
                 </span>
-                <span className="gradient-text block">Digital Innovation</span>
+                <span className="gradient-text block">
+                  Fueling Startups
+                </span>
               </h1>
-
-              <p
-                className={`text-xl mb-8 max-w-2xl leading-relaxed animate-slide-up ${
-                  isDarkMode ? "text-gray-300" : "text-gray-600"
-                }`}
-              >
-                We help businesses harness the power of technology to streamline
-                operations, scale efficiently, and stay competitive in a
-                fast-changing world.
+              
+              <p className={`text-xl mb-8 max-w-2xl leading-relaxed animate-slide-up ${
+                isDarkMode ? 'text-gray-300' : 'text-gray-600'
+              }`}>
+                We build startups and businesses to design scalable digital solutions and e-commerce platforms that drive growth,
+                 boost efficiency, and keep you ahead of the curve.
               </p>
 
               {/* CTA Buttons */}
@@ -282,34 +268,34 @@ const Home = () => {
                   }`}
                 >
                   <Play size={20} />
-                  <span>Watch Demo</span>
+                  <span>About Us</span>
                 </button>
               </div>
 
               {/* Trusted Partners */}
-              <div className="animate-slide-up">
-                <p
-                  className={`text-sm mb-4 ${
-                    isDarkMode ? "text-gray-400" : "text-gray-500"
-                  }`}
-                >
-                  Our Trusted Partners
-                </p>
-                <div className="flex flex-wrap gap-6">
-                  {trustedPartners.slice(0, 4).map((partner, index) => (
-                    <span
-                      key={index}
-                      className={`text-lg font-semibold transition-colors cursor-default ${
-                        isDarkMode
-                          ? "text-gray-400 hover:text-primary-400"
-                          : "text-gray-500 hover:text-primary-500"
-                      }`}
-                      style={{ animationDelay: `${index * 0.1}s` }}
-                    >
-                      {partner}
-                    </span>
-                  ))}
-                </div>
+              <div className="animate-slide-up flex flex-wrap gap-14">
+                {/* <p className={`text-sm mb-4 ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>
+                  Contact Us
+                </p> */}
+                 <div className="flex flex-wrap gap-6">
+         {trustedPartners.slice(0, 4).map((partner, index) => (
+    <a
+      key={index}
+      href={partner.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`text-lg font-semibold transition-colors ${
+        isDarkMode 
+          ? 'text-gray-400 hover:text-primary-400' 
+          : 'text-gray-500 hover:text-primary-500'
+      }`}
+      style={{ animationDelay: `${index * 0.1}s` }}
+    >
+      {partner.name}
+    </a>
+  ))}
+</div>
+
               </div>
             </div>
 
@@ -321,19 +307,17 @@ const Home = () => {
                   alt="Team collaboration"
                   className="rounded-2xl shadow-2xl w-full h-96 object-cover"
                 /> */}
-                <div className="w-[700px] h-[600px]">
-                  <Bot />
+                <div className='w-[700px] h-[600px] '>
+                  <Bot/>
                 </div>
-                {/* <div className="absolute inset-0 bg-gradient-to-tr from-primary-500/20 to-secondary-500/20 rounded-2xl"></div> */}
+                
 
+                {/* <div className="absolute inset-0 bg-gradient-to-tr from-primary-500/20 to-secondary-500/20 rounded-2xl"></div> */}
+                
                 {/* Floating Stats Card */}
-                <div
-                  className={`absolute -bottom-6 -right-28 p-6 rounded-2xl shadow-xl animate-float ${
-                    isDarkMode
-                      ? "glass-morphism"
-                      : "bg-white border border-gray-200"
-                  }`}
-                >
+                <div className={`absolute -bottom-6 -right-28 p-6 rounded-2xl shadow-xl animate-float ${
+                  isDarkMode ? 'glass-morphism' : 'bg-white border border-gray-200'
+                }`}>
                   <div className="flex items-center space-x-4">
                     <div className="text-3xl font-bold gradient-text">500+</div>
                     <div>
@@ -356,13 +340,9 @@ const Home = () => {
                 </div>
 
                 {/* Floating Achievement Badge */}
-                <div
-                  className={`absolute top-6 left-14 p-4 rounded-full shadow-xl animate-bounce-slow ${
-                    isDarkMode
-                      ? "glass-morphism"
-                      : "bg-white border border-gray-200"
-                  }`}
-                >
+                <div className={`absolute top-6 left-14 p-4 rounded-full shadow-xl animate-bounce-slow ${
+                  isDarkMode ? 'glass-morphism' : 'bg-white border border-gray-200'
+                }`}>
                   <Award className="w-8 h-8 text-primary-400" />
                 </div>
               </div>
@@ -491,10 +471,7 @@ const Home = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section
-        className={`py-20 ${isDarkMode ? "bg-dark-800" : "bg-white"}`}
-        ref={testimonialsRef}
-      >
+     {/* { <section className={`py-20 ${isDarkMode ? 'bg-dark-800' : 'bg-white'}`} ref={testimonialsRef}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2
@@ -566,7 +543,7 @@ const Home = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section>} */}
 
       {/* CTA Section */}
       <section
@@ -584,22 +561,13 @@ const Home = () => {
           ></div>
         </div>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <h2
-            className={`text-4xl md:text-6xl font-bold mb-6 ${
-              isDarkMode ? "text-white" : "text-gray-900"
-            }`}
-          >
-            Ready to Transform Your
-            <span className="gradient-text block">Digital Presence?</span>
+          <h2 className={`text-3xl md:text-6xl font-bold mb-6 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
+           Launch Your Vision with 
+            <span className="gradient-text block">SolvX AI Solutions</span>
           </h2>
-          <p
-            className={`text-xl mb-8 max-w-2xl mx-auto ${
-              isDarkMode ? "text-gray-300" : "text-gray-600"
-            }`}
-          >
-            Join hundreds of satisfied clients who have transformed their
-            businesses with our expert solutions. Let's discuss your project
-            today.
+          <p className={`text-xl mb-8 max-w-2xl mx-auto ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+            We’re a startup building powerful digital solutions to help businesses grow. From websites to custom software,
+             we turn your ideas into reality
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             <Link

@@ -1,23 +1,29 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { 
   Code, 
   Smartphone, 
-  Palette, 
+  Rocket, 
   TrendingUp, 
   Globe, 
   ShoppingCart, 
   Database, 
   Shield,
   ArrowRight,
-  Check
+  Check,
+  Cloud,
+  LifeBuoy,
+  ServerCog  
 } from 'lucide-react';
 import CtaSection from '../components/CtaSection';
+import ServicesModal from '../components/ServicesModal';
 
 const Services = () => {
   const servicesRef = useRef(null);
   const isDarkMode = useSelector(state => state.theme.isDarkMode);
+  const [selectedService, setSelectedService] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -37,51 +43,82 @@ const Services = () => {
       icon: <Code className="w-12 h-12" />,
       title: "Web Development",
       description: "Custom websites and web applications built with modern technologies",
-      features: ["React & Vue.js", "Node.js Backend", "Responsive Design", "SEO Optimization"],
-      price: "Starting at $1,999"
-    },
-    {
-      icon: <Smartphone className="w-12 h-12" />,
-      title: "Mobile App Development",
-      description: "Native and cross-platform mobile applications for iOS and Android",
-      features: ["React Native", "Flutter", "Native Development", "App Store Deployment"],
-      price: "Starting at $4,999"
-    },
-    {
-      icon: <Palette className="w-12 h-12" />,
-      title: "UI/UX Design",
-      description: "Beautiful, intuitive designs that enhance user experience and engagement",
-      features: ["User Research", "Wireframing", "Prototyping", "Design Systems"],
-      price: "Starting at $1,499"
-    },
-    {
-      icon: <Globe className="w-12 h-12" />,
-      title: "Full-Stack Solutions",
-      description: "Complete web solutions from frontend to backend and database",
-      features: ["Database Design", "API Development", "Cloud Deployment", "Maintenance"],
-      price: "Starting at $3,999"
+      features: [
+        "Built to grow with your business needs",
+        "Custom features tailored to your needs",
+        "Optimized for search engines (SEO)",
+        "Secure and scalable architecture"
+      ],
+      price: "Tailored Solutions, Transparent Pricing"
     },
     {
       icon: <ShoppingCart className="w-12 h-12" />,
       title: "E-commerce Development",
       description: "Powerful online stores with payment integration and inventory management",
       features: ["Payment Gateway", "Inventory System", "Admin Dashboard", "Analytics"],
-      price: "Starting at $2,999"
+      price: "Built for Your Needs, Priced for Your Budget"
     },
     {
-      icon: <TrendingUp className="w-12 h-12" />,
-      title: "Digital Marketing",
-      description: "Strategic marketing solutions to grow your online presence and reach",
-      features: ["SEO Strategy", "Content Marketing", "Social Media", "Analytics"],
-      price: "Starting at $999/month"
+      icon: <Smartphone className="w-12 h-12" />,
+      title: "Mobile App Development",
+      description: "Native and cross-platform mobile applications for iOS and Android",
+      features: ["React Native", "Flutter", "Native Development", "App Store Deployment"],
+      price: "Premium Quality Without the Premium Price"
+    },
+    
+    {
+      icon: <Rocket  className="w-12 h-12" />,
+      title: "Startup Supports",
+      description: "We turn startup ideas into products with strategy and speed.",
+      features: [
+        "Idea Validation",
+        "MVP & App Development",
+        "UI/UX for Startups",
+        "Pitch-Ready Prototypes"
+      ],
+      price: "Let's Build Something Great — Pricing That Fits You"
+    },
+    {
+      icon: <Cloud className="w-12 h-12" />,
+      title: "Cloud Services",
+      description: "Scalable cloud infrastructure and deployment to power your applications.",
+      features: [
+        "Cloud Architecture",
+        "CI/CD & DevOps",
+        "Auto-scaling & Monitoring",
+        "AWS / GCP / Azure Setup"
+      ],
+      price: "Affordable. Scalable. Yours."
+    },
+    {
+      icon: <ServerCog className="w-12 h-12" />,
+      title: "SaaS Development",
+      description: "We build scalable, secure SaaS platforms tailored to your business model.",
+      features: [
+        "Multi-Tenant Architecture",
+        "Subscription & Billing Integration",
+        "Admin & User Portals",
+        "API-First Development"
+      ],
+      price: "Smart Web Solutions, Smarter Pricing"
     }
   ];
 
   const additionalServices = [
     { icon: <Database />, title: "Database Management", description: "Efficient data storage and retrieval solutions" },
     { icon: <Shield />, title: "Security Services", description: "Protect your digital assets with advanced security" },
-    { icon: <Globe />, title: "Cloud Solutions", description: "Scalable cloud infrastructure and deployment" }
+    { icon: <LifeBuoy />, title: "Maintenance & Support", description: "Ongoing technical support, updates, and performance monitoring." }
   ];
+
+  const handleServiceClick = (service) => {
+    setSelectedService(service);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedService(null);
+  };
 
   return (
     <div className={`pt-16 min-h-screen ${isDarkMode ? 'bg-dark-900' : 'bg-gray-50'}`}>
@@ -92,8 +129,8 @@ const Services = () => {
             Our <span className="gradient-text">Services</span>
           </h1>
           <p className={`text-xl max-w-3xl mx-auto mb-12 animate-slide-up ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-            Comprehensive digital solutions tailored to your business needs. 
-            From concept to deployment, we've got you covered.
+            Complete digital development — web, mobile, SaaS, e-commerce, and more — 
+            Customized to match your vision and scale your success.
           </p>
         </div>
       </section>
@@ -132,16 +169,17 @@ const Services = () => {
                   ))}
                 </ul>
                 <div className={`border-t pt-6 ${isDarkMode ? 'border-white/10' : 'border-gray-200'}`}>
-                  <div className="text-lg font-semibold gradient-text mb-4">
+                  {/* <div className="text-lg font-semibold gradient-text mb-4">
                     {service.price}
-                  </div>
-                  <Link
-                    to="/contact"
+                  </div> */}
+                  <button
+                    onClick={() => handleServiceClick(service)}
                     className="w-full gradient-bg text-white px-6 py-3 rounded-full font-semibold flex items-center justify-center space-x-2 hover:scale-105 transition-transform duration-300"
                   >
-                    <span>Get Quote</span>
+                    <span>View More</span>
                     <ArrowRight size={16} />
-                  </Link>
+                  </button>
+
                 </div>
               </div>
             ))}
@@ -225,6 +263,13 @@ const Services = () => {
 
       {/* CTA Section */}
       <CtaSection />
+      <ServicesModal 
+        isOpen={isModalOpen} 
+        onClose={handleCloseModal}
+        service={selectedService}
+        isDarkMode={isDarkMode}
+      />
+
     </div>
   );
 };
