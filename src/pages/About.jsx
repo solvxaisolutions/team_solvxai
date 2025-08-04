@@ -113,18 +113,17 @@ const About = () => {
               </h2>
               <div className={`space-y-6 leading-relaxed ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
                 <p>
-                  Founded in 2019, SolvxAI began as a small team of passionate developers 
-                  who believed that every business deserves a powerful digital presence. 
-                  What started as a vision to democratize web development has grown into 
-                  a full-service digital agency.
+                  Founded in 2025, SolvxAI began as a small team of passionate developers 
+                  who believed that every business deserves a powerful digital presence.
                 </p>
                 <p>
-                  Today, we're proud to have helped over 500 businesses across 25 countries 
-                  achieve their digital goals. From startups to enterprise companies, we've 
-                  been the trusted partner in their digital transformation journey.
+                  At SolvxAI, we're committed to growing alongside our clients—building
+                  innovative solutions, forging meaningful partnerships, and constantly 
+                  evolving to meet the needs of a digital-first world. Every project we 
+                  take on is a step toward shaping the future of digital experiences.
                 </p>
                 <p>
-                  Our mission remains the same: to create exceptional digital experiences 
+                  Our mission: to create exceptional digital experiences 
                   that drive real business results. We combine creativity with technology, 
                   strategy with execution, and passion with precision.
                 </p>
@@ -183,7 +182,7 @@ const About = () => {
       </section>
 
       {/* Team Section */}
-      <section className={`py-20 ${isDarkMode ? 'bg-dark-800' : 'bg-white'}`}>
+      {/* <section className="py-20 bg-dark-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className={`text-4xl font-bold mb-6 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
@@ -225,10 +224,10 @@ const About = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Achievements Section */}
-      <section className={`py-20 ${isDarkMode ? 'bg-dark-900' : 'bg-gray-50'}`}>
+      {/* <section className="py-20 bg-dark-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className={`text-4xl font-bold mb-6 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
@@ -261,10 +260,26 @@ const About = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* CTA Section */}
-     <CtaSection />
+      <section className="py-20 hero-pattern">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            Ready to Work With Us?
+          </h2>
+          <p className="text-xl text-gray-300 mb-8">
+            Let's collaborate and create something amazing together
+          </p>
+          <Link
+            to="/contact"
+            className="gradient-bg text-white px-12 py-4 rounded-full font-semibold inline-flex items-center space-x-2 hover:scale-105 transition-transform duration-300 shadow-lg hover:shadow-primary-500/25"
+          >
+            <span>Get In Touch</span>
+            <ArrowRight size={20} />
+          </Link>
+        </div>
+      </section>
     </div>
   );
 };
