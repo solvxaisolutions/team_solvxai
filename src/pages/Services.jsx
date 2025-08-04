@@ -43,22 +43,27 @@ const Services = () => {
       icon: <Code className="w-12 h-12" />,
       title: "Web Development",
       description: "Custom websites and web applications built with modern technologies",
-      features: ["React, Typescript & Next.js", "Node.js/Python Backend", "Responsive Design", "SEO Optimization"],
-      price: "Starting at ₹1,999"
+      features: [
+        "Built to grow with your business needs",
+        "Custom features tailored to your needs",
+        "Optimized for search engines (SEO)",
+        "Secure and scalable architecture"
+      ],
+      price: "Tailored Solutions, Transparent Pricing"
     },
     {
       icon: <ShoppingCart className="w-12 h-12" />,
       title: "E-commerce Development",
       description: "Powerful online stores with payment integration and inventory management",
       features: ["Payment Gateway", "Inventory System", "Admin Dashboard", "Analytics"],
-      price: "Starting at ₹2,999"
+      price: "Built for Your Needs, Priced for Your Budget"
     },
     {
       icon: <Smartphone className="w-12 h-12" />,
       title: "Mobile App Development",
       description: "Native and cross-platform mobile applications for iOS and Android",
       features: ["React Native", "Flutter", "Native Development", "App Store Deployment"],
-      price: "Starting at ₹4,999"
+      price: "Premium Quality Without the Premium Price"
     },
     
     {
@@ -71,7 +76,7 @@ const Services = () => {
         "UI/UX for Startups",
         "Pitch-Ready Prototypes"
       ],
-      price: "Starting at ₹1,499"
+      price: "Let's Build Something Great — Pricing That Fits You"
     },
     {
       icon: <Cloud className="w-12 h-12" />,
@@ -83,7 +88,7 @@ const Services = () => {
         "Auto-scaling & Monitoring",
         "AWS / GCP / Azure Setup"
       ],
-      price: "Starting at ₹3,999"
+      price: "Affordable. Scalable. Yours."
     },
     {
       icon: <ServerCog className="w-12 h-12" />,
@@ -95,7 +100,7 @@ const Services = () => {
         "Admin & User Portals",
         "API-First Development"
       ],
-      price: "Starting at ₹4,999"
+      price: "Smart Web Solutions, Smarter Pricing"
     }
   ];
 
@@ -164,9 +169,9 @@ const Services = () => {
                   ))}
                 </ul>
                 <div className={`border-t pt-6 ${isDarkMode ? 'border-white/10' : 'border-gray-200'}`}>
-                  <div className="text-lg font-semibold gradient-text mb-4">
+                  {/* <div className="text-lg font-semibold gradient-text mb-4">
                     {service.price}
-                  </div>
+                  </div> */}
                   <button
                     onClick={() => handleServiceClick(service)}
                     className="w-full gradient-bg text-white px-6 py-3 rounded-full font-semibold flex items-center justify-center space-x-2 hover:scale-105 transition-transform duration-300"

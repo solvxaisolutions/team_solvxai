@@ -6,7 +6,14 @@ import { Link } from 'react-router-dom';
 const CtaSection = () => {
     const isDarkMode = useSelector(state => state.theme.isDarkMode);
     return (
-        <section className={`py-20 ${isDarkMode ? 'bg-dark-800' : 'bg-gradient-to-r from-primary-500/20 to-secondary-500/20'}`}>
+        <section className={`py-20 relative overflow-hidden ${isDarkMode ? 'bg-dark-900' : 'bg-gray-50'}`}>
+          <div className="absolute inset-0">
+            <div className={`absolute top-0 left-0 w-full h-full ${
+              isDarkMode 
+                ? 'bg-gradient-to-r from-primary-500/10 to-secondary-500/10' 
+                : 'bg-gradient-to-r from-primary-500/20 to-secondary-500/20'
+            }`}></div>
+          </div>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className={`text-4xl md:text-5xl font-bold mb-6 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
             Ready to Work With Us?
