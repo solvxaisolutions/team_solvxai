@@ -262,6 +262,8 @@ const Services = () => {
       </section>
 
       {/* CTA Section */}
+      {/* <CtaSection /> */}
+      {/* CTA Section */}
       <section className="py-20 hero-pattern">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className={`text-4xl md:text-5xl font-bold mb-6 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>

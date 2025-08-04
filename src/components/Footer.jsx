@@ -112,7 +112,7 @@ const Footer = () => {
 
         <div className="border-t border-white/10 mt-8 pt-8 text-center">
           <p className="text-gray-400 text-md">
-            © 2024 SolvxAI. All rights reserved. Have a &#9749; chai and chat with us.
+            © 2025 SolvxAI. All rights reserved. Have a &#9749; chai and chat with us.
           </p>
         </div>
       </div>

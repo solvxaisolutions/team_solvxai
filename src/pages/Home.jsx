@@ -229,14 +229,14 @@ const trustedPartners = [
                   <span>Let's Work Together</span>
                   <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <button className={`px-8 py-4 rounded-full font-semibold flex items-center justify-center space-x-2 transition-all duration-300 ${
+                <Link to='/about' className={`px-8 py-4 rounded-full font-semibold flex items-center justify-center space-x-2 transition-all duration-300 ${
                   isDarkMode 
                     ? 'border-2 border-white/30 text-white hover:bg-white/10 backdrop-blur-sm hover:border-white/50'
                     : 'border-2 border-gray-300 text-gray-700 hover:bg-gray-100 hover:border-gray-400'
                 }`}>
                   <Play size={20} />
                   <span>About Us</span>
-                </button>
+                </Link>
               </div>
 
               {/* Trusted Partners */}
