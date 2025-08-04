@@ -94,39 +94,43 @@ const Navbar = () => {
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
           <div className={`md:hidden absolute top-16 left-0 w-full backdrop-blur-md border-b animate-slide-up ${
-            isDarkMode 
-              ? 'bg-dark-800/95 border-white/10' 
-              : 'bg-white/95 border-gray-200'
-          }`}>
-            <div className="px-4 py-4 space-y-4">
-              {navItems.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.path}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className={`block transition-colors duration-200 py-2 ${
-                    isDarkMode 
-                      ? 'text-white hover:text-primary-400' 
-                      : 'text-gray-900 hover:text-primary-500'
-                  } ${
-                    location.pathname === item.path 
-                      ? isDarkMode ? 'text-primary-400' : 'text-primary-500'
-                      : ''
-                  }`}
-                >
-                  {item.name}
-                </Link>
-              ))}
-              <div className="pt-4 border-t border-white/10">
-                <div className="flex items-center justify-between">
-                  <span className={`text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-                    Theme
-                  </span>
-                  <ThemeToggle />
-                </div>
-              </div>
-            </div>
-          </div>
+  isDarkMode 
+    ? 'bg-dark-800/95 border-white/10' 
+    : 'bg-white/95 border-gray-200'
+}`}>
+  <div className="px-4 py-4 space-y-4">
+    {navItems.map((item) => (
+      <Link
+        key={item.name}
+        to={item.path}
+        onClick={() => setIsMobileMenuOpen(false)}
+        className={`block transition-colors duration-200 py-2 relative group ${
+          location.pathname === item.path
+            ? isDarkMode 
+              ? 'text-primary-400' 
+              : 'text-primary-500'
+            : isDarkMode 
+              ? 'text-white hover:text-primary-400' 
+              : 'text-gray-900 hover:text-primary-500'
+        }`}
+      >
+        {item.name}
+        {/* Only show underline on hover (not for active item) */}
+        {location.pathname !== item.path && (
+          <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary-500 to-secondary-500 transition-all duration-300 group-hover:w-full"></span>
+        )}
+      </Link>
+    ))}
+    <div className="pt-4 border-t border-white/10">
+      <div className="flex items-center justify-between">
+        <span className={`text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+          Theme
+        </span>
+        <ThemeToggle />
+      </div>
+    </div>
+  </div>
+</div>
         )}
       </div>
     </nav>
