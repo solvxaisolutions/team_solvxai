@@ -4,6 +4,8 @@ import { updateFormData, setSubmitting, setSubmitSuccess, resetForm } from '../s
 import { Mail, Phone, MapPin, Send, CheckCircle, Clock, Users, MessageSquare } from 'lucide-react';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
+import { db } from '../firebase/firebase';
+import { collection, addDoc } from 'firebase/firestore';
 
 const Contact = () => {
   const dispatch = useDispatch();
@@ -45,26 +47,15 @@ const Contact = () => {
     dispatch(setSubmitting(true));
 
     try {
-      const response = await fetch(
-        'https://script.google.com/macros/s/AKfycbyw0QcjHsvAWf58SA1nPXFqOv7sCyzhHva5OHUOo-xmWCaQBpk61kJF_WDSydGDHpSwqA/exec',
-        {
-          method: 'POST',
-          body: JSON.stringify(formData),
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          mode: 'cors', // Explicitly set CORS mode
-          credentials: 'omit', // Ensure no credentials are sent
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-
-      const result = await response.text();
-      dispatch(setSubmitSuccess(true));
-      alert('Submitted: ' + result);
+      await addDoc(collection(db, "submissions"), {
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      service: formData.service,
+      message: formData.message,
+      timestamp: new Date()
+    });
+    alert("Submitted successfully!");
     } catch (err) {
       console.error('Submission error:', err);
       alert('Failed to submit');
