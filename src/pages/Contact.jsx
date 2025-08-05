@@ -39,12 +39,13 @@ const Contact = () => {
     if (errors[name]) setErrors(prev => ({ ...prev, [name]: '' }));
   };
 
+  
+
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
+  if (!validateForm()) return;
 
-    if (!validateForm()) return;
-
-    dispatch(setSubmitting(true));
+  dispatch(setSubmitting(true));
 
     try {
       await addDoc(collection(db, "submissions"), {
