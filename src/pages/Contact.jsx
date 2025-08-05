@@ -46,32 +46,29 @@ const Contact = () => {
 
     try {
       const response = await fetch(
-        'https://script.google.com/macros/s/AKfycbyw0QcjHsvAWf58SA1nPXFqOv7sCyzhHva5OHUOo-xmWCaQBpk61kJF_WDSydGDHpSwqA/exec',
+        'https://script.google.com/macros/s/AKfycbxo2tPr6Zbd0vJFVDa-thXaw-uz5xYprrrYu0L5TZZHo_GsN-wjcnn5_KELDop7YZg/exec',
         {
           method: 'POST',
           body: JSON.stringify(formData),
           headers: {
             'Content-Type': 'application/json',
           },
-          mode: 'cors', // Explicitly set CORS mode
-          credentials: 'omit', // Ensure no credentials are sent
         }
       );
 
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
+      if (!response.ok) throw new Error('Failed to submit');
+    const result = await response.json();
+    
+    dispatch(setSubmitSuccess(true));
+    console.log('Success:', result);
+  } catch (err) {
+    console.error('Error:', err);
+    alert('Submission failed. Please try again.');
+  } finally {
+    dispatch(setSubmitting(false));
+  }
+};
 
-      const result = await response.text();
-      dispatch(setSubmitSuccess(true));
-      alert('Submitted: ' + result);
-    } catch (err) {
-      console.error('Submission error:', err);
-      alert('Failed to submit');
-    } finally {
-      dispatch(setSubmitting(false));
-    }
-  };
 
   const handleReset = () => {
     dispatch(resetForm());

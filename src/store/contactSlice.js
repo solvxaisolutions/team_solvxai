@@ -4,6 +4,7 @@ const initialState = {
   formData: {
     name: '',
     email: '',
+    phone: '',
     message: '',
     service: ''
   },
