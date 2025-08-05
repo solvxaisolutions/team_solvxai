@@ -41,14 +41,14 @@ const Contact = () => {
 
   
 
-  const handleSubmit = async (e) => {
+ const handleSubmit = async (e) => {
   e.preventDefault();
   if (!validateForm()) return;
 
   dispatch(setSubmitting(true));
 
-    try {
-      await addDoc(collection(db, "submissions"), {
+  try {
+    await addDoc(collection(db, "submissions"), {
       name: formData.name,
       email: formData.email,
       phone: formData.phone,
@@ -56,19 +56,23 @@ const Contact = () => {
       message: formData.message,
       timestamp: new Date()
     });
-    alert("Submitted successfully!");
-    } catch (err) {
-      console.error('Submission error:', err);
-      alert('Failed to submit');
-    } finally {
-      dispatch(setSubmitting(false));
-    }
-  };
 
-  const handleReset = () => {
-    dispatch(resetForm());
-    setErrors({});
-  };
+    dispatch(setSubmitSuccess(true)); // ✅ ADD THIS
+    // alert("Submitted successfully!");
+  } catch (err) {
+    console.error('Submission error:', err);
+    alert('Failed to submit');
+  } finally {
+    dispatch(setSubmitting(false));
+  }
+};
+
+const handleReset = () => {
+  dispatch(resetForm());
+  dispatch(setSubmitSuccess(false)); // <- Reset success state
+  setErrors({});
+};
+
 
   const contactInfo = [
     {
@@ -94,9 +98,9 @@ const Contact = () => {
   const services = [
     "Web Development",
     "Mobile App Development",
-    "UI/UX Design",
+    "SaaS Development ",
     "E-commerce Solutions",
-    "Digital Marketing",
+    "Startup Supports ",
     "Cloud Solutions",
     "Other"
   ];
