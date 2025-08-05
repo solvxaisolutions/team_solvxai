@@ -37,33 +37,51 @@ const Contact = () => {
     if (errors[name]) setErrors(prev => ({ ...prev, [name]: '' }));
   };
 
+  
+
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
+  if (!validateForm()) return;
 
-    if (!validateForm()) return;
+  dispatch(setSubmitting(true));
 
-    dispatch(setSubmitting(true));
-
-    try {
-      const response = await fetch(
-        'https://script.google.com/macros/s/AKfycbxo2tPr6Zbd0vJFVDa-thXaw-uz5xYprrrYu0L5TZZHo_GsN-wjcnn5_KELDop7YZg/exec',
-        {
-          method: 'POST',
-          body: JSON.stringify(formData),
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      );
-
-      if (!response.ok) throw new Error('Failed to submit');
-    const result = await response.json();
+  try {
+    // Use the NEW deployment URL
+    const scriptUrl = 'https://script.google.com/macros/s/AKfycbyf_N4ax-IFzOHDrJz7PqGRUxXg919vEKm917tjtXF5CnUJ8MlCLgmdqhhLOZM8kIKD/exec';
     
+    // Add timestamp to form data
+    const submissionData = {
+      ...formData,
+      timestamp: new Date().toISOString()
+    };
+
+    // First make OPTIONS request
+    await fetch(scriptUrl, {
+      method: 'OPTIONS',
+      mode: 'no-cors'
+    });
+    
+
+    // Then make POST request
+    const response = await fetch(scriptUrl, {
+      method: 'POST',
+      body: JSON.stringify(submissionData),
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      mode: 'cors', // Important
+      credentials: 'omit'
+    });
+
+    if (!response.ok) throw new Error('Network response was not ok');
+    
+    const result = await response.json();
     dispatch(setSubmitSuccess(true));
     console.log('Success:', result);
+    
   } catch (err) {
     console.error('Error:', err);
-    alert('Submission failed. Please try again.');
+    alert('Submission failed. Please try again later.');
   } finally {
     dispatch(setSubmitting(false));
   }
