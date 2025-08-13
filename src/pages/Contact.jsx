@@ -5,7 +5,7 @@ import { Mail, Phone, MapPin, Send, CheckCircle, Clock, Users, MessageSquare } f
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 import { db } from '../firebase/firebase';
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, addDoc,serverTimestamp } from 'firebase/firestore';
 
 const Contact = () => {
   const dispatch = useDispatch();
@@ -41,7 +41,7 @@ const Contact = () => {
 
   
 
- const handleSubmit = async (e) => {
+const handleSubmit = async (e) => {
   e.preventDefault();
   if (!validateForm()) return;
 
@@ -54,11 +54,11 @@ const Contact = () => {
       phone: formData.phone,
       service: formData.service,
       message: formData.message,
-      timestamp: new Date()
+      createdAt: serverTimestamp(), // ✅ proper timestamp for sorting
+      read: false // ✅ default status for dashboard
     });
 
-    dispatch(setSubmitSuccess(true)); // ✅ ADD THIS
-    // alert("Submitted successfully!");
+    dispatch(setSubmitSuccess(true));
   } catch (err) {
     console.error('Submission error:', err);
     alert('Failed to submit');
@@ -66,6 +66,7 @@ const Contact = () => {
     dispatch(setSubmitting(false));
   }
 };
+
 
 const handleReset = () => {
   dispatch(resetForm());
